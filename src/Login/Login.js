@@ -1,15 +1,31 @@
 import { useState } from 'react';
 import './Login.css';
+import LoginService from '../services/Login.service';
+
 function Login() {
 
     const [email, setEmail] = useState('rafa@gmail.com');
     const [password, setPassword] = useState('');
   
-    let loginUser = (event) => {
+    let loginUser = async (event) => {
       event.preventDefault();
       console.log(`Email: ${email}`)
       console.log(`password: ${password}`)
       console.log('Formulário enviado')
+
+        // Chame o serviço de login aqui
+        try {
+            const loginService = new LoginService({
+                username: email,
+                password: password
+            })
+            const loginResponse = await loginService.loginAPI();
+            console.log('Resposta do serviço de login:', loginResponse['data']);
+            // Você pode fazer algo com a resposta, como redirecionar o usuário ou mostrar mensagens de erro.
+        } catch (error) {
+            console.error('Erro ao chamar o serviço de login:', error);
+            // Lida com erros, como exibir mensagens de erro para o usuário.
+        }
   
     }
 
