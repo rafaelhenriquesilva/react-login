@@ -1,5 +1,15 @@
-.custom_card {
-    margin: 0 auto;
-    margin-top: 10%;
-    width: 18rem;
-  }
+.black-card {
+  background-color: #4845459c;
+  color: white;
+  padding: 20px;
+  margin: 0px 10px 10px 10px;
+}
+
+.customButtom{
+  margin-top: 30px;
+  width: 25%;
+}
+
+.divButton{
+  text-align: center;
+}

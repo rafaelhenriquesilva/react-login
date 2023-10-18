@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './Login.css';
 import LoginService from '../services/Login.service';
-
+import Notification from '../utils/Notification';
 function Login() {
 
     const [email, setEmail] = useState('rafa@gmail.com');
@@ -31,8 +31,11 @@ function Login() {
 
     return (
         <>
-            <div className="card custom_card" >
-
+            <Notification type="success" />
+            <div className="card black-card" >
+                <div className="card-header">
+                    <h1>Login</h1>
+                </div>
                 <div className="card-body">
                     <form className="form-group" onSubmit={loginUser}>
                         <label >Email address</label>
@@ -53,7 +56,9 @@ function Login() {
                             placeholder="Password"
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        <div className='divButton'>
+                        <button type="submit" className="btn btn-primary customButtom">Login</button>
+                        </div>
                     </form>
                 </div>
 
