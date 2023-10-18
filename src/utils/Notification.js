@@ -1,13 +1,7 @@
-import React from 'react';
-import { toast, ToastContainer } from 'react-toastify';
-import "react-toastify/dist/ReactToastify.css";
-
-
-export default function Notification({ type }) {
-  const notify = () => {
-
-    switch (type) {
-        case "success":
+/**
+ *  TYPE AND POSITION TOAST
+ *  
+ *      case "success":
             toast.success("Success Notification !", {
                 position: toast.POSITION.TOP_CENTER
             });
@@ -32,17 +26,39 @@ export default function Notification({ type }) {
                 position: toast.POSITION.BOTTOM_RIGHT,
                 className: 'foo-bar'
             });
-            break;
-        default:
-            toast("Default Notification !");
-    }
+ */
 
-  };
 
-   return (
-      <>
-        <button onClick={notify}>Notify</button>;
-        <ToastContainer />
-      </>
-    );
-}
+
+
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ReactDOM from 'react-dom';
+
+let containerId = null; 
+
+const initToastContainer = () => {
+  if (containerId) {
+    return containerId; 
+  }
+
+  const container = document.createElement('div');
+  document.body.appendChild(container);
+
+  const containerComponent = <ToastContainer containerId={container} />;
+  ReactDOM.render(containerComponent, container);
+
+  containerId = container; 
+
+  return container;
+};
+
+const notify = (type, message) => {
+  const container = initToastContainer(); 
+  toast[type](message, {
+    containerId: container,
+    position: toast.POSITION.TOP_CENTER
+  });
+};
+
+export default notify;
