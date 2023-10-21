@@ -1,0 +1,19 @@
+.container-dash {
+    width: 100%
+} 
+
+.body-graph {
+    text-align: center
+}
+
+.body-success {
+    background-color: green
+}
+
+.body-loss {
+    background-color: red
+}
+
+.custom_card {
+    height: 50vh
+}

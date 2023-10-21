@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import './Login.css';
-import LoginService from '../services/Login.service';
-import notify from '../utils/Notification';
-import Dashboard from '../components/Dashboard/Dashboard';
+import LoginService from '../../services/Login.service';
+import notify from '../../utils/Notification';
+import Dashboard from '../Dashboard/Dashboard';
 function Login() {
 
     const [email, setEmail] = useState('rafa@gmail.com');

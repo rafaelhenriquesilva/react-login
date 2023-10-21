@@ -29,36 +29,34 @@
  */
 
 
-
-
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom'; // Importe createRoot a partir de 'react-dom/client'
 
-let containerId = null; 
+let containerId = null;
 
 const initToastContainer = () => {
-  if (containerId) {
-    return containerId; 
-  }
+    if (containerId) {
+        return containerId;
+    }
 
-  const container = document.createElement('div');
-  document.body.appendChild(container);
+    const container = document.createElement('div');
+    document.body.appendChild(container);
 
-  const containerComponent = <ToastContainer containerId={container} />;
-  ReactDOM.render(containerComponent, container);
+    const containerComponent = <ToastContainer containerId={container} />;
+    createRoot(container).render(containerComponent); // Use createRoot para renderizar o componente
 
-  containerId = container; 
+    containerId = container;
 
-  return container;
+    return container;
 };
 
 const notify = (type, message) => {
-  const container = initToastContainer(); 
-  toast[type](message, {
-    containerId: container,
-    position: toast.POSITION.TOP_CENTER
-  });
+    const container = initToastContainer();
+    toast[type](message, {
+        containerId: container,
+        position: toast.POSITION.TOP_CENTER
+    });
 };
 
 export default notify;
